@@ -24,10 +24,15 @@ export class RecipeService{
             ])
       ];
     constructor(private shoppingListService: ShoppingListService){}
+    
     getRecipes(){
         return this.recipes.slice();
     }
 
+    setRecipes(recipes: Recipe[]){
+        this.recipes = recipes;
+        // this.recipeSelected.next(this.recipes.slice());
+    }
     addIngrediantsToShoppingList(ingrediants: Ingrediant[]){
         this.shoppingListService.addIngrediantOfItem(ingrediants);
     }
