@@ -7,22 +7,22 @@ import { Response } from '@angular/http';
      templateUrl: './header.component.html'
 })
 export class HeaderComponent{
-     @Output() featureSelected = new EventEmitter<string>();
-     constructor(private dataStorageService: DataStorageService){}
+     // @Output() featureSelected = new EventEmitter<string>();
+     // constructor(private dataStorageService: DataStorageService){}
 
-     onSelect(feature: string){
-          this.featureSelected.emit(feature);
-     }
-     onSaveData(){
-          this.dataStorageService.storesRecipes()
-          .subscribe(
-               (response :Response) =>{
-                    console.log(response);
-               }
-          );
-     }
+     // onSelect(feature: string){
+     //      this.featureSelected.emit(feature);
+     // }
+     // onSaveData(){
+     //      this.dataStorageService.storesRecipes()
+     //      .subscribe(
+     //           (response :Response) =>{
+     //                console.log(response);
+     //           }
+     //      );
+     // }
 
-     onFetchdata(){
-          this.dataStorageService.getRecipes();
-     }
+     // onFetchdata(){
+     //      this.dataStorageService.getRecipes();
+     // }
 }
