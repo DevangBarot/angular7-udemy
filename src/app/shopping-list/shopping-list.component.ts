@@ -10,7 +10,6 @@ import { Ingrediant } from '../shared/ingredient.model';
 })
 export class ShoppingListComponent implements OnInit {
   ingredients: Ingrediant[];
-  
   constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
@@ -19,8 +18,10 @@ export class ShoppingListComponent implements OnInit {
     .subscribe(
       (ingrediant: Ingrediant[]) => {
         this.ingredients = ingrediant;
-      }
-    )
-  }
+      });
+    }
 
+    onEditItem(index: number) {
+      this.slService.startedEditing.next(index);
+    }
 }
