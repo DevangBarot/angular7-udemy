@@ -12,14 +12,14 @@ export class RecipeService {
         new Recipe(
             'Recipe 1',
             'This is a Description of Recipe 1',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9bro1oP1uOgN3RPKLvfLacQoKtzsmXttNtuLlF7Yhy_DnG8ZM',[
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9bro1oP1uOgN3RPKLvfLacQoKtzsmXttNtuLlF7Yhy_DnG8ZM', [
                 new Ingrediant('Cabbage', 1),
                 new Ingrediant('Broccoli', 2)
             ]),
         new Recipe(
             'Recipe 2',
             'This is a Description of Recipe 2',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9bro1oP1uOgN3RPKLvfLacQoKtzsmXttNtuLlF7Yhy_DnG8ZM',[
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9bro1oP1uOgN3RPKLvfLacQoKtzsmXttNtuLlF7Yhy_DnG8ZM', [
                 new Ingrediant('Bread', 1),
                 new Ingrediant('Cheese', 1)
             ])
@@ -30,10 +30,11 @@ export class RecipeService {
         return this.recipes.slice();
     }
 
-    // setRecipes(recipes: Recipe[]) {
-    //     this.recipes = recipes;
-    //     // this.recipeSelected.next(this.recipes.slice());
-    // }
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        // this.recipeSelected.next(this.recipes.slice());
+    }
+
     addIngrediantsToShoppingList(ingrediants: Ingrediant[]) {
         this.shoppingListService.addIngrediantOfItem(ingrediants);
     }
@@ -59,4 +60,6 @@ export class RecipeService {
       // @ts-ignore
       this.recipesChanged.next(this.recipes.slice());
     }
+
+
 }
