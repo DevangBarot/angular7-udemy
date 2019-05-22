@@ -1,4 +1,4 @@
-import {CanActivate} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 
@@ -10,3 +10,4 @@ export class AuthGuardService implements CanActivate {
     return this.authService.isAuthenticated();
   }
 }
+
