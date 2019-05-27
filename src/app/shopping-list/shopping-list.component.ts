@@ -2,6 +2,9 @@ import { ShoppingListService } from './shopping-list.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Ingrediant } from '../shared/ingredient.model';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-shopping-list',
@@ -9,16 +12,17 @@ import { Ingrediant } from '../shared/ingredient.model';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients: Ingrediant[];
-  constructor(private slService: ShoppingListService) { }
+  shoppingListState: Observable<{ingredients: Ingrediant[]}>;
+  constructor(private slService: ShoppingListService,
+              private store: Store<{shoppingList: {ingredients: Ingrediant[]}}>) { }
 
   ngOnInit() {
-    this.ingredients = this.slService.getIngrediants()
-    this.slService.ingrediantChanged
-    .subscribe(
-      (ingrediant: Ingrediant[]) => {
-        this.ingredients = ingrediant;
-      });
+    this.shoppingListState = this.store.select('shoppingList');
+    // this.slService.ingrediantChanged
+    // .subscribe(
+    //   (ingrediant: Ingrediant[]) => {
+    //     this.ingredients = ingrediant;
+    //   });
     }
 
     onEditItem(index: number) {

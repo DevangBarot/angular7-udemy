@@ -1,8 +1,10 @@
-import { ShoppingListService } from './../shopping-list/shopping-list.service';
-import { Ingrediant } from './../shared/ingredient.model';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Recipe } from './recipe.model';
 import { Subject} from 'rxjs/Subject';
+
+import { Recipe } from './recipe.model';
+import { Ingrediant } from './../shared/ingredient.model';
+import { ShoppingListService } from './../shopping-list/shopping-list.service';
+import {DataStorageService} from '../shared/data-storage.service';
 
 @Injectable()
 export class RecipeService {
@@ -24,9 +26,10 @@ export class RecipeService {
                 new Ingrediant('Cheese', 1)
             ])
       ];
-    constructor(private shoppingListService: ShoppingListService ) {}
+    constructor(private shoppingListService: ShoppingListService) {}
 
     getRecipes() {
+        //this.recipes = this.dataStorageService.getRecipes();
         return this.recipes.slice();
     }
 
